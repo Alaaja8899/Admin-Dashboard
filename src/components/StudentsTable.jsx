@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Space, Table, Tag , Button } from 'antd';
+import { Space, Table , Button } from 'antd';
 import { PiEyeClosed } from 'react-icons/pi';
 import { BiEdit, BiTrash } from 'react-icons/bi';
 import { Input} from 'antd';
@@ -36,7 +36,7 @@ const columns = [
             <Button>
               <BiEdit/>
               </Button>
-              <Button >
+              <Button danger type='dashed'>
                 <BiTrash />
               </Button>
         </Space>

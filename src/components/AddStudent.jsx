@@ -24,9 +24,7 @@ function AddStudent() {
       <GredientBtn icon={<BiPlus/>} text={"Add Student"}/>
       </div>
       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <h2>Add Student</h2>
       </Modal>
     </div>
   )
