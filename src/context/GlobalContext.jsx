@@ -4,7 +4,7 @@ const context = createContext();
 
 function GlobalContext({children}) {
     const [PathUrl,setPathUrl] = useState('/upload') 
-const [Menue,setMenue] = useState(true)
+    const [Menue,setMenue] = useState(false)
 
     const values = {PathUrl,setPathUrl, Menue, setMenue}
   return (

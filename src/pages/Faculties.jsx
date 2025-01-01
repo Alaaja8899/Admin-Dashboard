@@ -1,7 +1,10 @@
 import React from 'react'
-import { BiEdit, BiTrash } from 'react-icons/bi';
+import { BiDownload, BiEdit, BiTrash } from 'react-icons/bi';
 import { Space, Table , Button } from 'antd';
 import { useState,useEffect } from 'react';
+import GredientBtn from '../components/GredientBtn';
+import SingleUpload from '../components/SingleUpload';
+import { ApiUrls } from '../config/config';
 
 
 
@@ -53,7 +56,24 @@ function Faculties() {
 
 
   return (
-    <div>
+    <div className='p-3'>
+
+
+      <div className="btnsH p-6 flex justify-between">
+
+
+
+      <div className="right flex gap-5">
+      {/* <GredientBtn icon={<BiDownload/> text="Get as Excel"}/> */}
+      <GredientBtn icon={<BiDownload/>} text={"Get as Excel"}/>
+      <SingleUpload UploadUrl={ApiUrls.studentUpload}/>
+      </div>
+      </div>
+      <hr />
+
+
+
+
     <Table columns={columns} dataSource={dummyJson}/>    
     </div>
   )

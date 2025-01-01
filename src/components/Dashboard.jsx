@@ -14,8 +14,6 @@ function Dashboard() {
     console.log('Params' , params)
   return (
     <div className='w-full'>
-        <Header/>
-
         <br />
         <p className="text-gray-400 p-6">
             {`Dashboard  ${PathUrl}`}

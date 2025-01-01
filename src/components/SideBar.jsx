@@ -11,8 +11,8 @@ function SideBar() {
     const {setPathUrl,Menue,setMenue} = useGlobalContext()
   return (
     <div   className={`${
-        Menue ? 'flex ' : 'hidden'
-      } md:flex  flex-col items-center pt-10 border-r-2 transition-opacity duration-500 max-h-screen sticky top-0`}
+        Menue ? 'flex md:relative absolute top-0 bottom-0 z-10' : 'md:flex hidden'
+      }   flex-col md:sticky top-0 items-center pt-20 border-r-2 bg-white transition-opacity duration-500 max-h-screen`}
       
       >
         

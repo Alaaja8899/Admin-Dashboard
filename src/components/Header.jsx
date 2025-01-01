@@ -21,7 +21,7 @@ function Header() {
         },
     ]
   return (
-    <header className="flex w-full bg-sky-400 p-6 justify-between h-[83px] cursor-pointer sticky top-0 z-10">
+    <header className="flex w-full bg-sky-400 p-6 justify-between h-[83px] cursor-pointer sticky top-0 z-20">
         <AiOutlineMenuFold onClick={()=> setMenue(!Menue)} size={22}/>
 
         <Dropdown menu={{items}}>

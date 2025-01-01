@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { Space, Table , Button } from 'antd';
+import { Space, Table , Button, Modal, Popconfirm, message } from 'antd';
 import { PiEyeClosed } from 'react-icons/pi';
 import { BiEdit, BiTrash } from 'react-icons/bi';
 import { Input} from 'antd';
 import { FiDelete } from 'react-icons/fi';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 const { Search } = Input;
 
-const columns = [
+
+function StudentsTable() {
+  const [dummyJson,setDummy]=useState([])
+  const [modalOpen,setModalOpen] = useState(false)
+
+
+
+
+
+  const columns = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -32,13 +42,18 @@ const columns = [
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Space size="middle">
-            <Button>
-              <BiEdit/>
+        <Space size="middle" className='cursor-pointer'>
+          <EditOutlined/>
+
+            <Popconfirm okText='Yes' cancelText='No' title='Delete Student' description={`Are Sure to delete Student : ${record.name}`}
+            onConfirm={()=>message.success("Successfully delted")}
+            onCancel={()=>message.error("Canceled deltetion")}
+            >
+              <Button type='dashed' danger>
+              <DeleteOutlined 
+          />
               </Button>
-              <Button danger type='dashed'>
-                <BiTrash />
-              </Button>
+            </Popconfirm>
         </Space>
       ),
     },
@@ -52,8 +67,15 @@ const columns = [
       facultyid:"CM3B"
     }
   ];
-function StudentsTable() {
-  const [dummyJson,setDummy]=useState([])
+
+
+    const showModal=()=>{
+        setModalOpen(true)      
+    }
+    const hideModal=()=>{
+        setModalOpen(false)      
+    }
+  
 
   const onSearch = (e) => {
     const text = e.target.value;
@@ -92,6 +114,20 @@ function StudentsTable() {
       onChange={onSearch}
       size="large"
     />
+
+
+      <Modal
+          open={modalOpen}
+          okText='Yes'
+          cancelText='No'
+          title="Update"    
+      >
+
+
+
+      </Modal>
+
+
     <Table columns={columns} dataSource={dummyJson}/>    
     </div>
   )
