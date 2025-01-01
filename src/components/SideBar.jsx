@@ -1,6 +1,6 @@
 import { Menu } from 'antd'
 import React from 'react'
-import { FaBuilding, FaSchool, FaUsers } from 'react-icons/fa'
+import { FaBuilding, FaUsers } from 'react-icons/fa'
 import { FcDepartment } from 'react-icons/fc'
 import { useNavigate } from 'react-router-dom'
 import logoIMG from '../assets/logo.png'

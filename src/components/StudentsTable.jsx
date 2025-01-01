@@ -128,7 +128,7 @@ function StudentsTable() {
       </Modal>
 
 
-    <Table columns={columns} dataSource={dummyJson}/>    
+    <Table  columns={columns} dataSource={dummyJson}/>    
     </div>
   )
 }
