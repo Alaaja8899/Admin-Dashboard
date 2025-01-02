@@ -13,7 +13,7 @@ function StudentsTable() {
   const [modalOpen,setModalOpen] = useState(false)
   const [Faculties,setFaculties]=useState([])
   const [departments,setDepartments]=useState([])
-  
+  const [search,setSearch]=useState('')
   const [stdName,setStdName]=useState('')
   const [id,setId]=useState()
   const [Faculty,setFaculty]=useState('')
@@ -81,16 +81,6 @@ function StudentsTable() {
     }
   ];
 
-
-  
-
-  const onSearch = (e) => {
-    const text = e.target.value;
-
-    console.log("Text : ",text)
-
-
-  };
 
       const handleOk = () => {
         setModalOpen(false);
@@ -167,7 +157,7 @@ function StudentsTable() {
       placeholder="Id ,Name ..."
       allowClear
       enterButton="Search"
-      onChange={onSearch}
+      onChange={(e)=> setSearch(e.target.value)}
       size="large"
     />
 
@@ -195,7 +185,9 @@ function StudentsTable() {
       </Modal>
 
 
-    <Table  columns={columns} dataSource={dummyJson}/>    
+    <Table  columns={columns} dataSource={dummyJson.filter(item=>{
+        return search ? item.name.toLowerCase().includes(search.toLowerCase()) || item.id.toString().includes(search.toLowerCase()) : item;
+    })}/>    
     </div>
   )
 }

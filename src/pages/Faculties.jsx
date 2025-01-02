@@ -1,43 +1,70 @@
 import React from 'react'
 import { BiDownload, BiEdit, BiTrash } from 'react-icons/bi';
-import { Space, Table , Button } from 'antd';
+import { Space, Table , Button, Popconfirm, message, Input, Modal } from 'antd';
 import { useState,useEffect } from 'react';
 import GredientBtn from '../components/GredientBtn';
 import SingleUpload from '../components/SingleUpload';
 import { ApiUrls } from '../config/config';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 
 
-const columns = [
-  {
-    title: 'FacultyName',
-    dataIndex: 'facultyname',
-    key: 'facultyname',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-          <Button>
-            <BiEdit/>
-            </Button>
-            <Button danger type='dashed'>
-              <BiTrash />
-            </Button>
-      </Space>
-    ),
-  },
-];
 
 
 
 
 function Faculties() {
     const [dummyJson,setDummy]=useState([])
+    const [modalOpen,setModalOpen] = useState(false)
+    const [Faculty,setFaculty]=useState('')
  
+
     
+
+
+    const handleOk = () => {
+      setModalOpen(false);
+      const faculty =Faculty ??=Faculty='None'
+      message.info(faculty)
+    };
+    const handleCancel = () => {
+      setModalOpen(false);
+    };
+
+
+    const columns = [
+      {
+        title: 'FacultyName',
+        dataIndex: 'facultyname',
+        key: 'facultyname',
+        render: (text) => <a>{text}</a>,
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        render: (_, record) => (
+          <Space size="middle">
+    
+                <EditOutlined onClick={()=>{
+                  setFaculty(record.facultyname)
+                  setModalOpen(true)
+                }}/>
+    
+                <Popconfirm okText='Yes' cancelText='No' title='Delete Faculty' description={`Are Sure to Faculty : ${record.facultyname}`}
+                onConfirm={()=>message.success("Successfully delted")}
+                onCancel={()=>message.error("Canceled deltetion")}
+                >
+                  <Button type='dashed' danger>
+                  <DeleteOutlined 
+              />
+                  </Button>
+                </Popconfirm>
+          </Space>
+        ),
+      },
+    ];
+    
+
 
   useEffect(() => {
     fetch('https://dummyjson.com/users')
@@ -70,6 +97,13 @@ function Faculties() {
       </div>
       </div>
       <hr />
+
+
+      <Modal 
+            className='flex flex-col gap-4'
+            title="Update Faculty" open={modalOpen} onOk={handleOk} onCancel={handleCancel} okText="Save">
+              <Input placeholder='Faculty Name' onChange={(e)=> setFaculty(e.target.value)} value={Faculty}/>
+      </Modal>
 
 
 

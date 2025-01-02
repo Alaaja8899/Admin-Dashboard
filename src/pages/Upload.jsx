@@ -8,7 +8,7 @@ function UploadFile() {
 
   const props = {
     name: 'file',
-    multiple: true,
+    accept:'.txt,.csv,.xltm,.xltx ,.xlsm,.xls,.xlsx',
     action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
     onChange(info) {
       const { status } = info.file;

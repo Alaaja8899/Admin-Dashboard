@@ -15,6 +15,7 @@ function SingleUpload({UploadUrl}) {
     const props = {
         name: 'file',
         action: UploadUrl,
+        accept:'.txt,.csv,.xltm,.xltx ,.xlsm,.xls,.xlsx',
         headers: {
           authorization: 'authorization-text',
         },
